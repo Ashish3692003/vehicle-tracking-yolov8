@@ -216,3 +216,50 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# ========================================
+# Project-Specific Patterns
+# ========================================
+
+# Video files (input and output)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wmv
+results/processed_video*.mp4
+data/*.mp4
+data/*.avi
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.onnx
+*.h5
+*.weights
+best.pt
+last.pt
+yolov8n.pt
+yolov8s.pt
+
+# Detection results
+results/*.txt
+results/*.csv
+results/*.json
+vehicle_count_log.txt
+
+# Sample images
+results/*.png
+results/*.jpg
+results/*.jpeg
+
+# Heavy data files
+data/*.*
+data/dataset/*
+
+# Temporary and working files
+*.tmp
+*.temp
+__MACOSX/
+.DS_Store
