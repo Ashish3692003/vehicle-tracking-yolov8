@@ -189,17 +189,6 @@ The system produces an annotated video with:
 
 ---
 
-## 📁 Repository Structure
-```
-vehicle-tracking-yolov8/
-├── README.md                     # This file
-├── .gitignore                    # Ignores .mp4, .pt files (too large for GitHub)
-├── src/
-│   └── detect_vehicles.py        # Standalone Python script
-└── results/
-    └── README.md                 # Output video frames & accuracy results
-```
-
 ---
 
 ## 📖 References
@@ -212,15 +201,8 @@ vehicle-tracking-yolov8/
 
 ## 📚 MLSAVA Case Study
 This project was developed as part of the **MLSAVA (Machine Learning for Speech & Video Analysis)** case study at **GITAM University, Visakhapatnam**. The case study required implementing a complete computer vision pipeline for real-time object detection, tracking, and counting on video streams.
-
----
-
-## 🔗 Related Projects
-Explore my other AI/ML projects on GitHub:
-- 🚦 **[Traffic Sign Recognition using CNN](https://github.com/Ashish3692003/traffic-sign-recognition-cnn)** — Deep Learning project for road sign classification
-- 🧠 **[MNIST CNN on FPGA-Zedboard](https://github.com/Ashish3692003/MNIST-CNN-FPGA-Zedboard)** — CNN hardware acceleration on Xilinx FPGA
-
----
+google colab notebook link : **[Vehicle_Detection_Ashish.ipynb]
+(https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)**
 
 <p align="center">
 Made with ❤️ by <strong>V. Ashish Nadh</strong> | <a href="https://github.com/Ashish3692003">View my GitHub</a>
