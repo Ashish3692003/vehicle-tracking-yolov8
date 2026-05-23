@@ -214,18 +214,6 @@ The system produces an annotated video with:
 
 ---
 
-## 🔗 Connected Portfolio Projects
-
-This project is part of a broader machine learning portfolio. Check out:
-
-| Project | Description |
-|---|---|
-| [Traffic Sign Recognition CNN](https://github.com/Ashish3692003/traffic-sign-recognition-cnn) | CNN classification of GTSRB traffic signs using TensorFlow/Keras |
-| [MNIST-CNN-FPGA-Zedboard](https://github.com/Ashish3692003/MNIST-CNN-FPGA-Zedboard) | Hardware deployment of trained CNN on Xilinx ZedBoard FPGA |
-
-Together, these projects demonstrate the full ML pipeline: **Train (CNN in Python → Deploy on FPGA Hardware)**.
-
----
 
 ## 📖 Reference
 
