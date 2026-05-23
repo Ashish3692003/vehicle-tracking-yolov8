@@ -1,24 +1,26 @@
 <p align="center">
-  
+
 # 🚗 vehicle-tracking-yolov8
-### 🎯 Real-Time Vehicle Tracking & Counting using YOLOv8 + ByteTrack
-  
+
+#### 🚀 Real-Time Vehicle Tracking & Counting using YOLOv8 + ByteTrack
+
 </p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Open%20in-Colab-orange?logo=google-colab" alt="Open in Colab"></a>
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python">
-  <img src="https://img.shields.io/badge/YOLOv8-v8.x-purple?logo=google-cloud" alt="YOLOv8">
-  <img src="https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv" alt="OpenCV">
-  <img src="https://img.shields.io/badge/Ultralytics-v8-red" alt="Ultralytics">
-  <img src="https://img.shields.io/badge/MIT-License-yellow" alt="License">
+<a href="#"><img src="https://img.shields.io/badge/Open%20in%20Colab-orange?logo=google-colab" alt="Open in Colab"></a>
+<img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python">
+<img src="https://img.shields.io/badge/YOLOv8-v8.x-purple?logo=google-cloud" alt="YOLOv8">
+<img src="https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv" alt="OpenCV">
+<img src="https://img.shields.io/badge/Ultralytics-v8-red" alt="Ultralytics">
 </p>
+
+---
 
 <!-- DEVELOPER -->
 <p align="center">
-  <image src="https://img.shields.io/badge/Developer-V.%20Ashish%20Nadh-lightgrey">
-  <image src="https://img.shields.io/badge/Institution-GITAM%20University%20Visakhapatnam-informational">
-  <image src="https://img.shields.io/badge/Course-MLSAVA%20--%20ML%20for%20Speech%20%26%20Video%20Analysis-blue">
+  <img src="https://img.shields.io/badge/Developer-V.%20Ashish%20Nadh-lightgrey">
+  <img src="https://img.shields.io/badge/Institution-GITAM%20University%20Visakhapatnam-informational">
+  <img src="https://img.shields.io/badge/Course-MLSAVA%20-%20ML%20for%20Speech%20%26%20Video%20Analysis-blue">
 </p>
 
 ---
@@ -41,48 +43,47 @@ Traditional traffic monitoring relies on:
 
 This project addresses these challenges by deploying a **deep learning-based vision system** that:
 - Processes raw video frames **sequentially** in real-time
-- Detects and classifies only **Cars, Buses, and Trucks** (ignoring pedestrians, bikes, etc.)
-- Assigns a **unique tracking ID** per vehicle across frames (no double-counting)
+- Detects and classifies only **Cars, Buses, and Trucks**
+- Assigns a **unique tracking ID** per vehicle across frames
 - Uses a **spatial crossing line** to count each vehicle **exactly once**
 
 ---
 
 ## 🧠 System Architecture
 
-The full processing pipeline is shown below:
-
-```
-[ Input: traffic.mp4 ]
-             │
-             ▼
-┌────────────────────────┐
-│   OpenCV Frame Reader  │  ← Extracts frames at video FPS
-└───────────┬────────────┘
-            │
-            ▼
+```text
+Video Input (car-detection.mp4)
+          │
+          ▼
 ┌─────────────────────────────────┐
-│    YOLOv8n Detection Model      │
-│  • Backbone: C2f (Coarse-to-Fine)│
-│  • Neck: PANet Pyramid          │
-│  • Head: Anchor-free predictor  │
-│  • Filtered Classes: Car(2),    │
-│    Bus(5), Truck(7) from COCO   │
+│    OpenCV Frame Reader          │
+│ • Reads frames at video FPS     │
+│ • Extracts frame dimensions     │
 └───────────┬─────────────────────┘
             │
             ▼
 ┌─────────────────────────────────┐
-│      ByteTrack Tracker          │
-│  • Motion prediction + IoU match│
-│  • Persistent IDs across frames │
-│  • Handles occlusion gracefully │
+│   YOLOv8n Detection Model       │
+│ • COCO filtered: Car=2,         │
+│   Bus=5, Truck=7                │
+│ • Anchor-free C2f backbone      │
+│ • PANet neck for multi-scale    │
 └───────────┬─────────────────────┘
             │
             ▼
 ┌─────────────────────────────────┐
-│   Spatial Crossing Line Logic   │
-│  • Virtual line across lanes    │
-│  • Triggers count on crossing   │
-│  • Prevents double count        │
+│ ByteTrack Tracker               │
+│ • Motion prediction + IoU match │
+│ • Persistent IDs across frames  │
+│ • Handles occlusion gracefully  │
+└───────────┬─────────────────────┘
+            │
+            ▼
+┌─────────────────────────────────┐
+│ Spatial Crossing Line Logic     │
+│ • Virtual line across lanes     │
+│ • Triggers count on crossing    │
+│ • Prevents double count         │
 └───────────┬─────────────────────┘
             │
             ▼
@@ -119,19 +120,17 @@ The full processing pipeline is shown below:
 ---
 
 ## 🛠️ Tech Stack
-
 | Category | Tools & Libraries |
 |---|---|
 | **Language** | Python 3.10+ |
 | **Deep Learning** | Ultralytics YOLOv8 (`ultralytics`) |
-| **Computer Vision** | OpenCV (cv2) |
+| **Computer Vision** | OpenCV (`cv2`) |
 | **GPU Runtime** | Google Colab (T4 GPU) |
-| **Editing & Development** | Google Colab Notebooks |
+| **Development** | Google Colab Notebooks |
 
 ---
 
 ## 📂 Dataset
-
 | Property | Details |
 |---|---|
 | **Source** | Intel IoT DevKit — `car-detection.mp4` |
@@ -150,62 +149,28 @@ git clone https://github.com/Ashish3692003/vehicle-tracking-yolov8.git
 cd vehicle-tracking-yolov8
 ```
 
-### 2. Install Dependencies
+### 2. Set Up Dependencies
 ```bash
-pip install -r requirements.txt
+pip install ultralytics>=8.0.0 opencv-python>=4.8.0 numpy>=1.24.0
 ```
 
-### 3. Download the Dataset
-Place the Intel IoT DevKit traffic video in `data/` folder:
+### 3. Run the Detection Script
 ```bash
-# Download from Intel IoT DevKit website
-# Save as: data/car-detection.mp4
+python src/detect_vehicles.py --input car-detection.mp4 --output results/output_counted.mp4
 ```
 
-See `data/README.md` for detailed instructions.
-
-### 4. Run the Model
-```bash
-python src/detect_vehicles.py --input data/car-detection.mp4 --output results/output_counted.mp4
-```
-
-### 5. Open in Colab
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67)
+### 4. View Results
+The output video will be saved in the `results/` folder with:
+- Bounding boxes drawn in **class-specific colors** (Car: Green, Bus: Blue, Truck: Red)
+- Unique **Track IDs** displayed on each vehicle
+- Running **vehicle count** overlay in top-left corner
+- **Counting line** visualization for tracking accuracy
 
 ---
 
-## 📁 Repository Structure
-```
-vehicle-tracking-yolov8/
-├── README.md              # This file
-├── requirements.txt       # Python dependencies
-├── LICENSE                # MIT License
-├── .gitignore             # Ignores .mp4, .pt files too large for GitHub
-├── src/
-│   └── detect_vehicles.py # Standalone Python script (mirrors Colab logic)
-├── notebooks/
-│   └── Vehicle_Detection.ipynb  # Original Colab notebook (.ipynb)
-├── data/
-│   └── README.md          # Dataset download instructions
-└── results/
-    └── README.md          # Output video frames & accuracy results
-```
+## 📊 Results
 
----
-
-## 📊 Key Project Highlights
-
-- ✅ **No training required** — leverages pretrained YOLOv8n on COCO (transfer learning)
-- ✅ **Real-time video processing** — frame-by-frame inference at video FPS
-- ✅ **Persistent vehicle IDs** — ByteTrack ensures each car keeps its identity
-- ✅ **Accurate counting** — spatial crossing line prevents double-counting
-- ✅ **Scalable & non-intrusive** — works on any overhead CCTV footage
-- ✅ **GPU-accelerated** on Google Colab T4
-
----
-
-## 🖼️ Output Example
-
+### Output Example
 The system produces an annotated video with:
 - Bounding boxes around detected vehicles (color-coded by class)
 - Unique Track IDs displayed on each vehicle
@@ -214,16 +179,49 @@ The system produces an annotated video with:
 
 ---
 
+## 💡 Key Project Highlights
+- ✅ **No training required** — uses pretrained YOLOv8n weights on COCO
+- ✅ **Real-time inference** with persistent vehicle tracking
+- ✅ **Accurate counting** using spatial line-crossing logic
+- ✅ **GPU-accelerated** on Google Colab T4
+- ✅ **Scalable architecture** — easily extendable to other vehicle classes
+- ✅ **Production-ready code** — clean, modular, and documented
 
-## 📖 Reference
+---
 
-- YOLOv8: Ultralytics, *YOLOv8 Documentation*, https://docs.ultralytics.com/
-- COCO Dataset: Lin et al., *Microsoft COCO: Common Objects in Context*, ECCV 2014
-- Intel IoT DevKit: Traffic Video Dataset
-- MLSAVA Course Material: GITAM University
+## 📁 Repository Structure
+```
+vehicle-tracking-yolov8/
+├── README.md                     # This file
+├── .gitignore                    # Ignores .mp4, .pt files (too large for GitHub)
+├── src/
+│   └── detect_vehicles.py        # Standalone Python script
+└── results/
+    └── README.md                 # Output video frames & accuracy results
+```
+
+---
+
+## 📖 References
+- **YOLOv8**: Ultralytics, *[YOLOv8 Documentation](https://docs.ultralytics.com/)*
+- **COCO Dataset**: Lin et al., *[Microsoft COCO: Common Objects in Context](https://cocodataset.org/)*, ECCV 2014
+- **ByteTrack**: Zhang et al., *[ByteTrack: Multi-Object Tracking by Associating Every Detection Box](https://github.com/ifzhang/ByteTrack)*, ECCV 2022
+- **Intel IoT DevKit**: Traffic Video Dataset
+
+---
+
+## 📚 MLSAVA Case Study
+This project was developed as part of the **MLSAVA (Machine Learning for Speech & Video Analysis)** case study at **GITAM University, Visakhapatnam**. The case study required implementing a complete computer vision pipeline for real-time object detection, tracking, and counting on video streams.
+
+---
+
+## 🔗 Related Projects
+Explore my other AI/ML projects on GitHub:
+- 🚦 **[Traffic Sign Recognition using CNN](https://github.com/Ashish3692003/traffic-sign-recognition-cnn)** — Deep Learning project for road sign classification
+- 🧠 **[MNIST CNN on FPGA-Zedboard](https://github.com/Ashish3692003/MNIST-CNN-FPGA-Zedboard)** — CNN hardware acceleration on Xilinx FPGA
 
 ---
 
 <p align="center">
-  Made with ❤️ by <strong>V. Ashish Nadh</strong> | <a href="https://github.com/Ashish3692003">View my GitHub</a>
+Made with ❤️ by <strong>V. Ashish Nadh</strong> | <a href="https://github.com/Ashish3692003">View my GitHub</a>
 </p>
