@@ -201,8 +201,7 @@ The system produces an annotated video with:
 
 ## 📚 MLSAVA Case Study
 This project was developed as part of the **MLSAVA (Machine Learning for Speech & Video Analysis)** case study at **GITAM University, Visakhapatnam**. The case study required implementing a complete computer vision pipeline for real-time object detection, tracking, and counting on video streams.
-google colab notebook link : **[Vehicle_Detection_Ashish.ipynb]
-(https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)**
+google colab notebook link : *[Vehicle_Detection_Ashish.ipynb](https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)*
 
 <p align="center">
 Made with ❤️ by <strong>V. Ashish Nadh</strong> | <a href="https://github.com/Ashish3692003">View my GitHub</a>
