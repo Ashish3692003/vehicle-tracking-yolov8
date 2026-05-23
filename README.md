@@ -20,7 +20,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Developer-V.%20Ashish%20Nadh-lightgrey">
   <img src="https://img.shields.io/badge/Institution-GITAM%20University%20Visakhapatnam-informational">
-  <img src="https://img.shields.io/badge/Course-MLSAVA%20-%20ML%20for%20Speech%20%26%20Video%20Analysis-blue">
+
 </p>
 
 ---
