@@ -128,3 +128,12 @@ out.release()
 * **Bi-Directional Lane Parsing:** Calculate displacement vectors ($\Delta y = cy_t - cy_{t-1}$) to track incoming and outgoing traffic volume across discrete lanes.
 * **Homography-Based Velocity Tracking:** Map perspective pixel coordinates to real-world ground distances to calculate real-time vehicle velocity and alert for road hazards.
 * **Edge Engine Compilation:** Convert PyTorch weights to INT8/FP16 TensorRT or ONNX engines for low-power edge gateways (e.g., NVIDIA Jetson Orin Nano).
+
+---
+## Project details
+Project Document: [Vehicle_Tracking_usingYOLOv8](https://docs.google.com/document/d/1KrWyRHYO8iDyk57okI3b-BhQXoHMafePhhO6kFFy3O8/edit?usp=sharing)
+Project Google Colab: [Google colab](https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)
+
+---
+## 8. Author 
+* **Ashish Nadh Varri** - [LinkedIn Profile](https://www.linkedin.com/in/ashishnadhvarri) • [GitHub](https://github.com/Ashish3692003)
