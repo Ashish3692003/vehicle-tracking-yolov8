@@ -131,7 +131,7 @@ out.release()
 
 ---
 ## Project details
-Project Document: [Vehicle_Tracking_usingYOLOv8](https://docs.google.com/document/d/1KrWyRHYO8iDyk57okI3b-BhQXoHMafePhhO6kFFy3O8/edit?usp=sharing)
+Project Document: [Vehicle_Tracking_usingYOLOv8](https://docs.google.com/document/d/1KrWyRHYO8iDyk57okI3b-BhQXoHMafePhhO6kFFy3O8/edit?usp=sharing) | 
 Project Google Colab: [Google colab](https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)
 
 ---
