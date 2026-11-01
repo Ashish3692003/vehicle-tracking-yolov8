@@ -13,8 +13,6 @@ This project delivers a **non-intrusive, software-defined traffic analysis pipel
 
 ## 🏗️ Architecture & Processing Pipeline
 
-## 🏗️ Architecture & Processing Pipeline
-
 ```mermaid
 flowchart TD
     subgraph INGESTION ["1. Ingestion & Frame Preprocessing"]
