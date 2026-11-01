@@ -13,39 +13,37 @@ This project delivers a **non-intrusive, software-defined traffic analysis pipel
 
 ## 🏗️ Architecture & Processing Pipeline
 
-```
-           [ Overhead CCTV Stream (car-detection.mp4) ]
-                               │
-                               ▼
-   ┌────────────────────────────────────────────────────────┐
-   │             OpenCV Frame Decapsulation                 │
-   │   • Dynamic dimension extraction (W x H) & FPS pacing  │
-   └───────────────────────────┬────────────────────────────┘
-                               │
-                               ▼
-   ┌────────────────────────────────────────────────────────┐
-   │             YOLOv8n Object Detection                   │
-   │   • Anchor-free center prediction & C2f backbone       │
-   │   • Selective COCO filter: Cars (2), Buses (5), Trucks(7)│
-   └───────────────────────────┬────────────────────────────┘
-                               │
-                               ▼
-   ┌────────────────────────────────────────────────────────┐
-   │             ByteTrack Multi-Object Tracker             │
-   │   • Kalman filter trajectory estimation + IoU matching │
-   │   • Low-confidence association prevents occlusion loss │
-   └───────────────────────────┬────────────────────────────┘
-                               │
-                               ▼
-   ┌────────────────────────────────────────────────────────┐
-   │          Spatial Hysteresis & Deduplication            │
-   │   • Centroid tracking: cy = (y1 + y2) // 2             │
-   │   • Hysteresis boundary band: [line_y - 105, line_y + 105] │
-   │   • O(1) hash set stateful vehicle counting            │
-   └───────────────────────────┬────────────────────────────┘
-                               │
-                               ▼
-            [ Annotated Output (output_counted.mp4) ]
+## 🏗️ Architecture & Processing Pipeline
+
+```mermaid
+flowchart TD
+    subgraph INGESTION ["1. Ingestion & Frame Preprocessing"]
+        A["Overhead CCTV Video Feed<br/><b>car-detection.mp4</b>"]
+        B["OpenCV VideoCapture Engine<br/>• Resolution (W × H) & FPS Extraction<br/>• Sequential Frame Normalization"]
+        A --> B
+    end
+
+    subgraph INFERENCE ["2. Vision & Tracking Pipeline"]
+        C["YOLOv8 Nano Inference<br/>• Anchor-Free Direct Center Regression<br/>• C2f Multi-Scale Feature Extraction<br/>• Selective Filter: Cars (2), Buses (5), Trucks (7)"]
+        D["ByteTrack Multi-Object Tracker<br/>• Kalman Filter Trajectory Prediction<br/>• Two-Stage IoU Association<br/>• Low-Confidence Tracklet Retention"]
+        B --> C
+        C --> D
+    end
+
+    subgraph ANALYTICS ["3. Spatial Analytics & Serialization"]
+        E["Spatial Hysteresis & Deduplication<br/>• Centroid Computation: cy = (y1 + y2) // 2<br/>• Detection Corridor: line_y ± 105 px<br/>• Stateful O(1) Hash Set Verification"]
+        F["Output Reconstruction<br/>• Visual Bounding Boxes & Unique IDs<br/>• Live Count Telemetry Overlay<br/><b>output_counted.mp4</b>"]
+        D --> E
+        E --> F
+    end
+
+    %% Node Styling
+    style A fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f8fafc
+    style B fill:#0f172a,stroke:#64748b,stroke-width:1px,color:#f8fafc
+    style C fill:#0f172a,stroke:#38bdf8,stroke-width:1px,color:#f8fafc
+    style D fill:#0f172a,stroke:#818cf8,stroke-width:1px,color:#f8fafc
+    style E fill:#0f172a,stroke:#f59e0b,stroke-width:1px,color:#f8fafc
+    style F fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#f8fafc
 ```
 
 ---
