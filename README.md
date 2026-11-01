@@ -4,24 +4,7 @@
 
 #### 🚀 Real-Time Vehicle Tracking & Counting using YOLOv8 + ByteTrack
 
-</p>
 
-<p align="center">
-<a href="#"><img src="https://img.shields.io/badge/Open%20in%20Colab-orange?logo=google-colab" alt="Open in Colab"></a>
-<img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python" alt="Python">
-<img src="https://img.shields.io/badge/YOLOv8-v8.x-purple?logo=google-cloud" alt="YOLOv8">
-<img src="https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv" alt="OpenCV">
-<img src="https://img.shields.io/badge/Ultralytics-v8-red" alt="Ultralytics">
-</p>
-
----
-
-<!-- DEVELOPER -->
-<p align="center">
-  <img src="https://img.shields.io/badge/Developer-V.%20Ashish%20Nadh-lightgrey">
-  <img src="https://img.shields.io/badge/Institution-GITAM%20University%20Visakhapatnam-informational">
-
-</p>
 
 ---
 
@@ -188,21 +171,3 @@ The system produces an annotated video with:
 - ✅ **Production-ready code** — clean, modular, and documented
 
 ---
-
----
-
-## 📖 References
-- **YOLOv8**: Ultralytics, *[YOLOv8 Documentation](https://docs.ultralytics.com/)*
-- **COCO Dataset**: Lin et al., *[Microsoft COCO: Common Objects in Context](https://cocodataset.org/)*, ECCV 2014
-- **ByteTrack**: Zhang et al., *[ByteTrack: Multi-Object Tracking by Associating Every Detection Box](https://github.com/ifzhang/ByteTrack)*, ECCV 2022
-- **Intel IoT DevKit**: Traffic Video Dataset
-
----
-
-## 📚 MLSAVA Case Study
-This project was developed as part of the **MLSAVA (Machine Learning for Speech & Video Analysis)** case study at **GITAM University, Visakhapatnam**. The case study required implementing a complete computer vision pipeline for real-time object detection, tracking, and counting on video streams.
-google colab notebook link : *[Vehicle_Detection_Ashish.ipynb](https://colab.research.google.com/drive/1FZRNogE0C9maYdpz13-vdgpGCdaQfm67?usp=sharing)*
-
-<p align="center">
-Made with ❤️ by <strong>V. Ashish Nadh</strong> | <a href="https://github.com/Ashish3692003">View my GitHub</a>
-</p>
